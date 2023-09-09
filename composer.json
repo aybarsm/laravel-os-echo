@@ -1,0 +1,62 @@
+{
+    "name": "aybarsm/laravel-os-echo",
+    "description": "A Laravel & Laravel Zero service provider package for fetching and executing OS commands from the OS-Master server.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "aybarsm",
+        "laravel",
+        "operating-syetem",
+        "linux",
+        "windows",
+        "mac",
+        "macOS",
+        "Darwin",
+        "BSD",
+        "Debian",
+        "Ubuntu",
+        "Oracle Linux",
+        "AlmaLinux",
+        "Rocky Linux",
+        "Alpine",
+        "Command",
+        "Echo",
+        "Pulse"
+    ],
+    "homepage": "https://github.com/aybarsm/laravel-os-echo",
+    "authors": [
+        {
+            "name": "Murat Aybars",
+            "email": "hello@aybarsm.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0",
+        "aybarsm/laravel-os": "dev-main"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aybarsm\\Laravel\\OsEcho\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aybarsm\\Laravel\\OsEcho\\OsEchoServiceProvider"
+            ],
+            "aliases": {
+                "Os": "Aybarsm\\Laravel\\OsEcho\\Facades\\OsEcho"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
