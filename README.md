@@ -1,7 +1,11 @@
 ## What It Does
 OS-Echo is a Laravel &amp; Laravel Zero service provider package for fetching and executing OS commands from the OS-Master server.
 
+<div style="text-align: center;">
+
 # ⚠️ WARNING: UNDER HEAVY DEVELOPMENT ⚠️
+
+</div>
 
 This code package is currently undergoing active and intensive development. It may contain unstable code, incomplete features, and may change frequently. As such, it's not recommended for use in critical or production environments.
 

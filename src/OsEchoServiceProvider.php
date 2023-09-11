@@ -15,19 +15,27 @@ class OsEchoServiceProvider extends ServiceProvider implements DeferrableProvide
             'os-echo'
         );
 
-        $this->app->singleton(OsEchoInterface::class, OsEcho::class);
+        $this->publishes([
+            __DIR__.'/../config/os-echo.php' => config_path('os-echo.php'),
+        ], 'config');
+
+        $concrete = sconfig('os-echo.concretes.OsEcho', \Aybarsm\Laravel\OsEcho\OsEcho::class);
+
+        $this->app->singleton(OsEchoInterface::class,
+            fn ($app) => new $concrete(
+                config('os-echo.handlers', []),
+                config('os-echo.request', []),
+                config('os-echo.logging', [])
+            )
+        );
 
         $this->app->alias(OsEchoInterface::class, 'os-echo');
-    }
 
-    public function boot(): void
-    {
+        $commandConcrete = sconfig('os-echo.concretes.OsEchoCommand', \Aybarsm\Laravel\OsEcho\Console\Commands\OsEchoCommand::class);
 
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../config/os-echo.php' => config_path('os-echo.php'),
-            ], 'config');
-        }
+        $this->commands([
+            $commandConcrete,
+        ]);
     }
 
     public function provides(): array
